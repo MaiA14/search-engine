@@ -1,0 +1,21 @@
+<router-outlet></router-outlet>
+<div>
+    <mat-form-field [ngStyle]="{'margin-top': '20px','font-size': '12px', 'font-weight': 'bold', 'margin-left': '5px'}">
+        <mat-label>Search</mat-label>
+        <input matInput class="example-full-width" (keyup)="applyFilter($event)" placeholder="Serach" #input>
+        <label *ngIf="loading" class="loader">Fetching data...</label>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource">
+        <div matColumnDef="item" [ngStyle]="{'white-space': 'nowrap'}">
+            <th mat-header-cell *matHeaderCellDef> Item </th>
+            <td mat-cell *matCellDef="let data"> {{data.item}} </td> 
+        </div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index;" [ngClass]="{'hovered-row': !showExpandedDetails}" (click)="selectFilm(i)"></tr>
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+    <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [length]="totalSize"
+        [pageIndex]="currentPage" (page)="handlePage($event)"></mat-paginator>
+</div>

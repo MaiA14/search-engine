@@ -1,0 +1,28 @@
+version: '2'
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  SQream:
+    container_name: server
+    image: 'sqream'
+    ports:
+      - "4000:4000"
+    networks:
+      - app-tier
+    build:
+      context: ./server/
+    volumes:
+      - ./server:/usr/src/sqream/server
+  client:
+   container_name: client
+   image: 'client'
+   ports:
+     - "8080:80"
+   networks:
+     - app-tier
+   build:
+      context: ./client/
+   volumes:
+     - ./client:/usr/src/sqream/client

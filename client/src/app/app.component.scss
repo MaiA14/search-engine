@@ -1,0 +1,39 @@
+table {
+    width: 80%;
+    margin-top: 20px;
+}
+
+.mat-mdc-form-field {
+    font-size: 12px;
+    width: 100%;
+}
+
+
+td {
+    font-size: 12px;
+}
+
+
+th {
+    width: 25%;
+    background-color: #0275d8 !important;
+    color: white;
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+
+input {
+    border-radius: 6px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.loader {
+    margin-left: 20px;
+}
+
+.hovered-row:hover {
+    background-color: rgba(2, 117, 216, 0.1) !important;
+    cursor: pointer !important;
+}
